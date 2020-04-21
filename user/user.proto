@@ -68,5 +68,4 @@ message Address {
     AppReq app = 3 [(gogoproto.jsontag) = 'app'];
     SkipUrlsReply reply = 4 [(gogoproto.jsontag) = 'reply'];
     repeated AppReply resp = 5 [(gogoproto.jsontag) = 'resp'];
-    repeated string urls = 6 [(gogoproto.jsontag) = 'urls'];
 }
