@@ -1,0 +1,389 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "user.proto",
+        "version": "1"
+    },
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json",
+        "multipart/form-data"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/styd.service.user.v1.User/DelStaff": {
+            "get": {
+                "summary": "/styd.service.user.v1.User/DelStaff",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/.google.protobuf.Empty"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "shop_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "tags": [
+                    "styd.service.user.v1.User"
+                ]
+            }
+        },
+        "/styd.service.user.v1.User/GetAppSecret": {
+            "get": {
+                "summary": "/styd.service.user.v1.User/GetAppSecret",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/.styd.service.user.v1.AppReply"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "sappkey",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "styd.service.user.v1.User"
+                ]
+            }
+        },
+        "/styd.service.user.v1.User/GetAppSkipUrls": {
+            "get": {
+                "summary": "/styd.service.user.v1.User/GetAppSkipUrls",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/.styd.service.user.v1.SkipUrlsReply"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "sappkey",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "styd.service.user.v1.User"
+                ]
+            }
+        },
+        "/styd.service.user.v1.User/GetStaffInfo": {
+            "get": {
+                "summary": "/styd.service.user.v1.User/GetStaffInfo",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/.styd.service.user.v1.StaffInfoReply"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "shop_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "tags": [
+                    "styd.service.user.v1.User"
+                ]
+            }
+        },
+        "/styd.service.user.v1.User/Ping": {
+            "get": {
+                "summary": "/styd.service.user.v1.User/Ping",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/.google.protobuf.Empty"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "styd.service.user.v1.User"
+                ]
+            }
+        },
+        "/user/validate": {
+            "post": {
+                "summary": "/user/validate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/.google.protobuf.Empty"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/.styd.service.user.v1.ValidateReq"
+                        }
+                    }
+                ],
+                "tags": [
+                    "styd.service.user.v1.User"
+                ]
+            }
+        }
+    },
+    "definitions": {
+        ".google.protobuf.Empty": {
+            "type": "object",
+            "properties": {},
+            "description": "A generic empty message that you can re-use to avoid defining duplicated\n empty messages in your APIs. A typical example is to use it as the request\n or the response type of an API method. For instance:\n\n     service Foo {\n       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n     }\n\n The JSON representation for `Empty` is empty JSON object `{}`."
+        },
+        ".styd.service.user.v1.Address": {
+            "type": "object",
+            "properties": {
+                "mobile": {
+                    "type": "string",
+                    "description": "mobile,min=6,max=20"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "max=100"
+                },
+                "app": {
+                    "$ref": "#/definitions/.styd.service.user.v1.AppReq"
+                },
+                "reply": {
+                    "$ref": "#/definitions/.styd.service.user.v1.SkipUrlsReply"
+                },
+                "resp": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/.styd.service.user.v1.AppReply"
+                    }
+                },
+                "urls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "mobile",
+                "address"
+            ]
+        },
+        ".styd.service.user.v1.AppReply": {
+            "type": "object",
+            "properties": {
+                "app_key": {
+                    "type": "string"
+                },
+                "app_secret": {
+                    "type": "string"
+                }
+            }
+        },
+        ".styd.service.user.v1.AppReq": {
+            "type": "object",
+            "properties": {
+                "sappkey": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sappkey"
+            ]
+        },
+        ".styd.service.user.v1.SkipUrlsReply": {
+            "type": "object",
+            "properties": {
+                "urls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        ".styd.service.user.v1.StaffInfoReply": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "staff_name": {
+                    "type": "string"
+                },
+                "nick_name": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "birthday": {
+                    "type": "string"
+                },
+                "sex": {
+                    "type": "string"
+                }
+            }
+        },
+        ".styd.service.user.v1.StaffInfoReq": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "shop_id": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "id",
+                "shop_id"
+            ]
+        },
+        ".styd.service.user.v1.ValidateReq": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "email"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "min=6,max=10"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "min=6,max=10"
+                },
+                "sex": {
+                    "type": "integer",
+                    "description": "gte=0,lte=2"
+                },
+                "age": {
+                    "type": "integer",
+                    "description": "gte=1,lte=60,gtefield=Sex"
+                },
+                "addr": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/.styd.service.user.v1.Address"
+                    },
+                    "description": "gt=0,dive"
+                }
+            },
+            "required": [
+                "email",
+                "name",
+                "password",
+                "sex",
+                "age",
+                "addr"
+            ]
+        }
+    }
+}
