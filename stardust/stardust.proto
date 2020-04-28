@@ -19,7 +19,7 @@ service StarDust {
 }
 
 message IdReq {
-    int64 biz_type = 1 [(gogoproto.jsontag) = 'biz_type',(gogoproto.moretags) = 'form:"biz_type" validate:"required,gte=0,lte=32"'];
+    int64 biz_type = 1 [(gogoproto.jsontag) = 'biz_type',(gogoproto.moretags) = 'form:"biz_type" validate:"required,gte=0,lt=32"'];
     int64 len = 2 [(gogoproto.jsontag) = 'len',(gogoproto.moretags) = 'form:"len" validate:"required,gte=0,lte=1000"'];
 }
 

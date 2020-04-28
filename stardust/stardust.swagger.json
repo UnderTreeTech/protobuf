@@ -41,7 +41,7 @@
                 "parameters": [
                     {
                         "name": "biz_type",
-                        "description": "gte=0,lte=32",
+                        "description": "gte=0,lt=32",
                         "in": "query",
                         "required": true,
                         "type": "integer"
@@ -84,7 +84,7 @@
                 "parameters": [
                     {
                         "name": "biz_type",
-                        "description": "gte=0,lte=32",
+                        "description": "gte=0,lt=32",
                         "in": "query",
                         "required": true,
                         "type": "integer"
@@ -184,7 +184,7 @@
             "properties": {
                 "biz_type": {
                     "type": "integer",
-                    "description": "gte=0,lte=32"
+                    "description": "gte=0,lt=32"
                 },
                 "len": {
                     "type": "integer",
