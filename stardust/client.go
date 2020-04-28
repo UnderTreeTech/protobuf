@@ -15,13 +15,13 @@ import (
 const AppID = "service.stardust.v1"
 
 // NewClient new grpc client
-func NewClient(cfg *warden.ClientConfig, opts ...grpc.DialOption) (UserClient, error) {
+func NewClient(cfg *warden.ClientConfig, opts ...grpc.DialOption) (StarDustClient, error) {
 	client := warden.NewClient(cfg, opts...)
 	cc, err := client.Dial(context.Background(), fmt.Sprintf("etcd://default/%s", AppID))
 	if err != nil {
 		return nil, err
 	}
-	return NewUserClient(cc), nil
+	return NewStarDustClient(cc), nil
 }
 
 // 生成 gRPC 代码
