@@ -221,6 +221,9 @@
                 },
                 "biz_type": {
                     "type": "integer"
+                },
+                "sequence": {
+                    "type": "integer"
                 }
             }
         },

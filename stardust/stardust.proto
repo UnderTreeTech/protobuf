@@ -40,4 +40,5 @@ message ParseReply {
     int64 idc = 2 [(gogoproto.jsontag) = 'idc'];
     int64 worker = 3 [(gogoproto.jsontag) = 'worker'];
     int64 biz_type = 4 [(gogoproto.jsontag) = 'biz_type'];
+    int64 sequence = 5 [(gogoproto.jsontag) = 'sequence'];
 }
