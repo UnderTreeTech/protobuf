@@ -1,0 +1,24 @@
+// 定义项目 API 的 proto 文件 可以同时描述 gRPC 和 HTTP API
+// protobuf 文件参考:
+//  - https://developers.google.com/protocol-buffers/
+syntax = "proto3";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+package service.stardust.v1;
+
+option go_package = "stardust";
+option (gogoproto.goproto_getters_all) = false;
+
+service StarDust {
+    rpc GetUniqueIds(IdReq) returns (IdReply);
+}
+
+message IdReq {
+    int64 biz_type = 1 [(gogoproto.jsontag) = 'biz_type',(gogoproto.moretags) = 'form:"biz_type" validate:"required,gte=0,lte=32"'];
+    int64 len = 2 [(gogoproto.jsontag) = 'len',(gogoproto.moretags) = 'form:"len" validate:"required,gte=0,lte=1000"'];
+}
+
+message IdReply {
+    repeated int64 ids = 1;
+}

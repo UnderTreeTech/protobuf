@@ -1,0 +1,93 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "stardust.proto",
+        "version": "1"
+    },
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json",
+        "multipart/form-data"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/service.stardust.v1.StarDust/GetUniqueIds": {
+            "get": {
+                "summary": "/service.stardust.v1.StarDust/GetUniqueIds",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/.service.stardust.v1.IdReply"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "biz_type",
+                        "description": "gte=0,lte=32",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "len",
+                        "description": "gte=0,lte=1000",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "tags": [
+                    "service.stardust.v1.StarDust"
+                ]
+            }
+        }
+    },
+    "definitions": {
+        ".service.stardust.v1.IdReply": {
+            "type": "object",
+            "properties": {
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        ".service.stardust.v1.IdReq": {
+            "type": "object",
+            "properties": {
+                "biz_type": {
+                    "type": "integer",
+                    "description": "gte=0,lte=32"
+                },
+                "len": {
+                    "type": "integer",
+                    "description": "gte=0,lte=1000"
+                }
+            },
+            "required": [
+                "biz_type",
+                "len"
+            ]
+        }
+    }
+}
