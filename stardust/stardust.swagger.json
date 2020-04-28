@@ -16,9 +16,9 @@
         "application/json"
     ],
     "paths": {
-        "/service.stardust.v1.StarDust/GetUniqueIds": {
+        "/service.stardust.v1.StarDust/GetUniqueId": {
             "get": {
-                "summary": "/service.stardust.v1.StarDust/GetUniqueIds",
+                "summary": "/service.stardust.v1.StarDust/GetUniqueId",
                 "responses": {
                     "200": {
                         "description": "A successful response.",
@@ -49,6 +49,84 @@
                     {
                         "name": "len",
                         "description": "gte=0,lte=1000",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "tags": [
+                    "service.stardust.v1.StarDust"
+                ]
+            }
+        },
+        "/service.stardust.v1.StarDust/GetUniqueIds": {
+            "get": {
+                "summary": "/service.stardust.v1.StarDust/GetUniqueIds",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/.service.stardust.v1.IdsReply"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "biz_type",
+                        "description": "gte=0,lte=32",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "len",
+                        "description": "gte=0,lte=1000",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "tags": [
+                    "service.stardust.v1.StarDust"
+                ]
+            }
+        },
+        "/service.stardust.v1.StarDust/ParseId": {
+            "get": {
+                "summary": "/service.stardust.v1.StarDust/ParseId",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/.service.stardust.v1.ParseReply"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
                         "in": "query",
                         "required": true,
                         "type": "integer"
@@ -96,11 +174,8 @@
         ".service.stardust.v1.IdReply": {
             "type": "object",
             "properties": {
-                "ids": {
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
+                "id": {
+                    "type": "integer"
                 }
             }
         },
@@ -119,6 +194,45 @@
             "required": [
                 "biz_type",
                 "len"
+            ]
+        },
+        ".service.stardust.v1.IdsReply": {
+            "type": "object",
+            "properties": {
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        ".service.stardust.v1.ParseReply": {
+            "type": "object",
+            "properties": {
+                "time": {
+                    "type": "integer"
+                },
+                "idc": {
+                    "type": "integer"
+                },
+                "worker": {
+                    "type": "integer"
+                },
+                "biz_type": {
+                    "type": "integer"
+                }
+            }
+        },
+        ".service.stardust.v1.ParseReq": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "id"
             ]
         }
     }

@@ -69,8 +69,48 @@ func (m *IdReq) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_IdReq proto.InternalMessageInfo
 
+type IdsReply struct {
+	Ids                  []int64  `protobuf:"varint,1,rep,packed,name=ids,proto3" json:"ids"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *IdsReply) Reset()         { *m = IdsReply{} }
+func (m *IdsReply) String() string { return proto.CompactTextString(m) }
+func (*IdsReply) ProtoMessage()    {}
+func (*IdsReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_71d205f85c3caec6, []int{1}
+}
+func (m *IdsReply) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *IdsReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_IdsReply.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *IdsReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_IdsReply.Merge(m, src)
+}
+func (m *IdsReply) XXX_Size() int {
+	return m.Size()
+}
+func (m *IdsReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_IdsReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_IdsReply proto.InternalMessageInfo
+
 type IdReply struct {
-	Ids                  []int64  `protobuf:"varint,1,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -80,7 +120,7 @@ func (m *IdReply) Reset()         { *m = IdReply{} }
 func (m *IdReply) String() string { return proto.CompactTextString(m) }
 func (*IdReply) ProtoMessage()    {}
 func (*IdReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_71d205f85c3caec6, []int{1}
+	return fileDescriptor_71d205f85c3caec6, []int{2}
 }
 func (m *IdReply) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -109,38 +149,133 @@ func (m *IdReply) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_IdReply proto.InternalMessageInfo
 
+type ParseReq struct {
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id" form:"id" validate:"required"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ParseReq) Reset()         { *m = ParseReq{} }
+func (m *ParseReq) String() string { return proto.CompactTextString(m) }
+func (*ParseReq) ProtoMessage()    {}
+func (*ParseReq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_71d205f85c3caec6, []int{3}
+}
+func (m *ParseReq) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ParseReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ParseReq.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ParseReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ParseReq.Merge(m, src)
+}
+func (m *ParseReq) XXX_Size() int {
+	return m.Size()
+}
+func (m *ParseReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_ParseReq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ParseReq proto.InternalMessageInfo
+
+type ParseReply struct {
+	Time                 int64    `protobuf:"varint,1,opt,name=time,proto3" json:"time"`
+	Idc                  int64    `protobuf:"varint,2,opt,name=idc,proto3" json:"idc"`
+	Worker               int64    `protobuf:"varint,3,opt,name=worker,proto3" json:"worker"`
+	BizType              int64    `protobuf:"varint,4,opt,name=biz_type,json=bizType,proto3" json:"biz_type"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ParseReply) Reset()         { *m = ParseReply{} }
+func (m *ParseReply) String() string { return proto.CompactTextString(m) }
+func (*ParseReply) ProtoMessage()    {}
+func (*ParseReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_71d205f85c3caec6, []int{4}
+}
+func (m *ParseReply) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ParseReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ParseReply.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ParseReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ParseReply.Merge(m, src)
+}
+func (m *ParseReply) XXX_Size() int {
+	return m.Size()
+}
+func (m *ParseReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_ParseReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ParseReply proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*IdReq)(nil), "service.stardust.v1.IdReq")
+	proto.RegisterType((*IdsReply)(nil), "service.stardust.v1.IdsReply")
 	proto.RegisterType((*IdReply)(nil), "service.stardust.v1.IdReply")
+	proto.RegisterType((*ParseReq)(nil), "service.stardust.v1.ParseReq")
+	proto.RegisterType((*ParseReply)(nil), "service.stardust.v1.ParseReply")
 }
 
 func init() { proto.RegisterFile("stardust.proto", fileDescriptor_71d205f85c3caec6) }
 
 var fileDescriptor_71d205f85c3caec6 = []byte{
-	// 355 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2b, 0x2e, 0x49, 0x2c,
-	0x4a, 0x29, 0x2d, 0x2e, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x12, 0x2e, 0x4e, 0x2d, 0x2a,
-	0xcb, 0x4c, 0x4e, 0xd5, 0x83, 0x8b, 0x97, 0x19, 0x4a, 0xe9, 0xa6, 0x67, 0x96, 0x64, 0x94, 0x26,
-	0xe9, 0x25, 0xe7, 0xe7, 0xea, 0xa7, 0xe7, 0xa7, 0xe7, 0xeb, 0x83, 0xd5, 0x26, 0x95, 0xa6, 0x81,
-	0x79, 0x60, 0x0e, 0x98, 0x05, 0x31, 0x43, 0x4a, 0x3a, 0x3d, 0x3f, 0x3f, 0x3d, 0x27, 0x15, 0xa1,
-	0x2a, 0x35, 0xb7, 0xa0, 0xa4, 0x12, 0x22, 0xa9, 0xb4, 0x81, 0x91, 0x8b, 0xd5, 0x33, 0x25, 0x28,
-	0xb5, 0x50, 0x28, 0x9a, 0x8b, 0x23, 0x29, 0xb3, 0x2a, 0xbe, 0xa4, 0xb2, 0x20, 0x55, 0x82, 0x51,
-	0x81, 0x51, 0x83, 0xd9, 0xc9, 0xe1, 0xd5, 0x3d, 0x79, 0xb8, 0xd8, 0xa7, 0x7b, 0xf2, 0x06, 0x69,
-	0xf9, 0x45, 0xb9, 0x56, 0x4a, 0x30, 0x11, 0x25, 0x85, 0xb2, 0xc4, 0x9c, 0xcc, 0x94, 0xc4, 0x92,
-	0x54, 0x2b, 0xa5, 0xa2, 0xd4, 0xc2, 0xd2, 0xcc, 0xa2, 0xd4, 0x14, 0x9d, 0xf4, 0x92, 0x54, 0x5b,
-	0x03, 0x9d, 0x9c, 0x92, 0x54, 0x5b, 0x63, 0x23, 0xa5, 0x20, 0xf6, 0xa4, 0xcc, 0xaa, 0x90, 0xca,
-	0x82, 0x54, 0x21, 0x2f, 0x2e, 0xe6, 0x9c, 0xd4, 0x3c, 0x09, 0x26, 0xb0, 0xb9, 0x16, 0xaf, 0xee,
-	0xc9, 0x83, 0xb8, 0x9f, 0xee, 0xc9, 0xeb, 0x42, 0x8c, 0xcc, 0x49, 0xcd, 0x23, 0x60, 0x9a, 0xa1,
-	0x81, 0x81, 0x81, 0x52, 0x10, 0x48, 0x97, 0x92, 0x34, 0x17, 0x3b, 0xc8, 0xc5, 0x05, 0x39, 0x95,
-	0x42, 0x02, 0x5c, 0xcc, 0x99, 0x29, 0xc5, 0x12, 0x8c, 0x0a, 0xcc, 0x1a, 0xcc, 0x41, 0x20, 0xa6,
-	0x51, 0x0f, 0x23, 0x17, 0x47, 0x70, 0x49, 0x62, 0x91, 0x4b, 0x69, 0x71, 0x89, 0x90, 0x19, 0x17,
-	0x4b, 0x40, 0x66, 0x5e, 0xba, 0x90, 0x98, 0x1e, 0x24, 0x08, 0xf4, 0x60, 0x41, 0xa0, 0xe7, 0x0a,
-	0x0a, 0x02, 0x29, 0x1c, 0xe2, 0x42, 0x1e, 0x5c, 0x3c, 0xee, 0xa9, 0x25, 0xa1, 0x79, 0x99, 0x85,
-	0xa5, 0xa9, 0x9e, 0x29, 0xc5, 0x42, 0x52, 0x7a, 0x58, 0xa2, 0x41, 0x0f, 0x1c, 0x6c, 0x52, 0x32,
-	0x38, 0xe5, 0x0a, 0x72, 0x2a, 0x9d, 0xe4, 0x4e, 0x3c, 0x94, 0x63, 0x38, 0xf1, 0x48, 0x8e, 0xf1,
-	0xc2, 0x23, 0x39, 0xc6, 0x07, 0x8f, 0xe4, 0x18, 0x67, 0x3c, 0x96, 0x63, 0x88, 0xe2, 0x80, 0x29,
-	0x4d, 0x62, 0x03, 0xdb, 0x6c, 0x0c, 0x08, 0x00, 0x00, 0xff, 0xff, 0x20, 0x79, 0xae, 0x2f, 0xf8,
-	0x01, 0x00, 0x00,
+	// 508 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0x4d, 0x6e, 0xd3, 0x40,
+	0x14, 0xc7, 0x6b, 0x3b, 0x24, 0xd6, 0x50, 0xb1, 0x18, 0xa4, 0x2a, 0x98, 0xd6, 0x0e, 0x23, 0xa1,
+	0x76, 0xd1, 0xba, 0x6e, 0x2b, 0x01, 0xaa, 0x54, 0x09, 0x05, 0x50, 0x65, 0x56, 0x95, 0x81, 0x0d,
+	0x2c, 0x90, 0xed, 0x99, 0x9a, 0x11, 0x4e, 0xec, 0x8c, 0xc7, 0x41, 0xee, 0x31, 0x58, 0xb1, 0xe5,
+	0x06, 0x1c, 0xa3, 0x4b, 0x4e, 0x60, 0x41, 0xd8, 0x79, 0x99, 0x13, 0xa0, 0x19, 0xdb, 0x21, 0x8b,
+	0x24, 0x6c, 0xc6, 0x7e, 0xef, 0xfd, 0xe7, 0x37, 0xef, 0x0b, 0xdc, 0xcb, 0xb8, 0xcf, 0x70, 0x9e,
+	0x71, 0x3b, 0x65, 0x09, 0x4f, 0xe0, 0xfd, 0x8c, 0xb0, 0x29, 0x0d, 0x89, 0xbd, 0xf0, 0x4f, 0x4f,
+	0x8c, 0xa3, 0x88, 0xf2, 0x4f, 0x79, 0x60, 0x87, 0xc9, 0xe8, 0x38, 0x4a, 0xa2, 0xe4, 0x58, 0x6a,
+	0x83, 0xfc, 0x5a, 0x5a, 0xd2, 0x90, 0x7f, 0x35, 0xc3, 0x78, 0x18, 0x25, 0x49, 0x14, 0x93, 0x7f,
+	0x2a, 0x32, 0x4a, 0x79, 0x51, 0x07, 0xd1, 0x0f, 0x05, 0xdc, 0x71, 0xb1, 0x47, 0x26, 0xf0, 0x03,
+	0xd0, 0x03, 0x7a, 0xf3, 0x91, 0x17, 0x29, 0xe9, 0x2b, 0x03, 0xe5, 0x40, 0x1b, 0x3e, 0xaf, 0x4a,
+	0x6b, 0xe1, 0x9b, 0x97, 0x96, 0x73, 0x9d, 0xb0, 0xd1, 0x39, 0x6a, 0x3d, 0x68, 0x30, 0xf5, 0x63,
+	0x8a, 0x7d, 0x4e, 0xce, 0x11, 0x23, 0x93, 0x9c, 0x32, 0x82, 0x0f, 0x23, 0x4e, 0x2e, 0x9c, 0xc3,
+	0x98, 0x93, 0x8b, 0xb3, 0x53, 0xe4, 0xf5, 0x02, 0x7a, 0xf3, 0xb6, 0x48, 0x09, 0x7c, 0x0d, 0xb4,
+	0x98, 0x8c, 0xfb, 0xaa, 0xe4, 0x3e, 0xab, 0x4a, 0x4b, 0x98, 0xf3, 0xd2, 0x3a, 0xaa, 0x91, 0x31,
+	0x19, 0xff, 0x87, 0x76, 0xe2, 0x38, 0x0e, 0xf2, 0xc4, 0x2d, 0xf4, 0x18, 0xe8, 0x2e, 0xce, 0x3c,
+	0x92, 0xc6, 0x05, 0x7c, 0x00, 0x34, 0x8a, 0xb3, 0xbe, 0x32, 0xd0, 0x0e, 0xb4, 0x61, 0x4f, 0x70,
+	0x29, 0xce, 0x3c, 0x71, 0xa0, 0x47, 0xa0, 0x27, 0x0a, 0x13, 0xaa, 0x1d, 0xa0, 0x52, 0xdc, 0x14,
+	0xd5, 0xad, 0x4a, 0x4b, 0xa5, 0xd8, 0x53, 0x29, 0x46, 0x2f, 0x80, 0x7e, 0xe5, 0xb3, 0x8c, 0x88,
+	0xf2, 0x9f, 0x2e, 0x69, 0xf6, 0x6b, 0xcd, 0xbc, 0xb4, 0xf6, 0xea, 0xfc, 0x28, 0x5e, 0x95, 0x1e,
+	0x92, 0x90, 0xaf, 0x0a, 0x00, 0x0d, 0x45, 0xbc, 0xb5, 0x0b, 0x3a, 0x9c, 0x8e, 0xda, 0x16, 0xea,
+	0x55, 0x69, 0x49, 0xdb, 0x93, 0x67, 0x9d, 0x6f, 0xd8, 0xf4, 0xa1, 0xc9, 0x37, 0x14, 0xf9, 0x86,
+	0x10, 0x81, 0xee, 0x97, 0x84, 0x7d, 0x26, 0xac, 0xaf, 0xc9, 0x28, 0xa8, 0x4a, 0xab, 0xf1, 0x78,
+	0xcd, 0x17, 0xee, 0x2f, 0xcd, 0xa8, 0x23, 0x55, 0xdb, 0xcb, 0x33, 0x5a, 0xf4, 0xfb, 0xf4, 0xbb,
+	0x0a, 0xf4, 0x37, 0xdc, 0x67, 0x2f, 0xf3, 0x8c, 0xc3, 0x27, 0xa0, 0x73, 0x45, 0xc7, 0x11, 0xdc,
+	0xb1, 0xeb, 0x4d, 0xb0, 0xdb, 0x4d, 0xb0, 0x5f, 0x89, 0x4d, 0x30, 0xd6, 0xf8, 0xa1, 0x0b, 0xb6,
+	0x2f, 0x09, 0x7f, 0x37, 0xa6, 0x93, 0x9c, 0xb8, 0x38, 0x83, 0x86, 0xbd, 0x62, 0x1b, 0x6d, 0xb9,
+	0x3d, 0xc6, 0xde, 0x9a, 0x58, 0x33, 0xa7, 0x4b, 0x70, 0x77, 0x09, 0xb5, 0x91, 0xb4, 0xbb, 0x36,
+	0x26, 0x40, 0x2e, 0xe8, 0xc9, 0x66, 0xbb, 0x18, 0xae, 0x7e, 0xb2, 0x1d, 0xa8, 0x61, 0x6d, 0x0a,
+	0xa7, 0x71, 0x31, 0x34, 0x6f, 0x7f, 0x9b, 0x5b, 0xb7, 0x33, 0x53, 0xf9, 0x39, 0x33, 0x95, 0x5f,
+	0x33, 0x53, 0xf9, 0xf6, 0xc7, 0xdc, 0x7a, 0xaf, 0xb7, 0xea, 0xa0, 0x2b, 0xdb, 0x71, 0xf6, 0x37,
+	0x00, 0x00, 0xff, 0xff, 0x25, 0x69, 0x55, 0x95, 0x94, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -156,7 +291,9 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type StarDustClient interface {
 	Ping(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
-	GetUniqueIds(ctx context.Context, in *IdReq, opts ...grpc.CallOption) (*IdReply, error)
+	GetUniqueIds(ctx context.Context, in *IdReq, opts ...grpc.CallOption) (*IdsReply, error)
+	GetUniqueId(ctx context.Context, in *IdReq, opts ...grpc.CallOption) (*IdReply, error)
+	ParseId(ctx context.Context, in *ParseReq, opts ...grpc.CallOption) (*ParseReply, error)
 }
 
 type starDustClient struct {
@@ -176,9 +313,27 @@ func (c *starDustClient) Ping(ctx context.Context, in *empty.Empty, opts ...grpc
 	return out, nil
 }
 
-func (c *starDustClient) GetUniqueIds(ctx context.Context, in *IdReq, opts ...grpc.CallOption) (*IdReply, error) {
-	out := new(IdReply)
+func (c *starDustClient) GetUniqueIds(ctx context.Context, in *IdReq, opts ...grpc.CallOption) (*IdsReply, error) {
+	out := new(IdsReply)
 	err := c.cc.Invoke(ctx, "/service.stardust.v1.StarDust/GetUniqueIds", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *starDustClient) GetUniqueId(ctx context.Context, in *IdReq, opts ...grpc.CallOption) (*IdReply, error) {
+	out := new(IdReply)
+	err := c.cc.Invoke(ctx, "/service.stardust.v1.StarDust/GetUniqueId", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *starDustClient) ParseId(ctx context.Context, in *ParseReq, opts ...grpc.CallOption) (*ParseReply, error) {
+	out := new(ParseReply)
+	err := c.cc.Invoke(ctx, "/service.stardust.v1.StarDust/ParseId", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -188,7 +343,9 @@ func (c *starDustClient) GetUniqueIds(ctx context.Context, in *IdReq, opts ...gr
 // StarDustServer is the server API for StarDust service.
 type StarDustServer interface {
 	Ping(context.Context, *empty.Empty) (*empty.Empty, error)
-	GetUniqueIds(context.Context, *IdReq) (*IdReply, error)
+	GetUniqueIds(context.Context, *IdReq) (*IdsReply, error)
+	GetUniqueId(context.Context, *IdReq) (*IdReply, error)
+	ParseId(context.Context, *ParseReq) (*ParseReply, error)
 }
 
 // UnimplementedStarDustServer can be embedded to have forward compatible implementations.
@@ -198,8 +355,14 @@ type UnimplementedStarDustServer struct {
 func (*UnimplementedStarDustServer) Ping(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
 }
-func (*UnimplementedStarDustServer) GetUniqueIds(ctx context.Context, req *IdReq) (*IdReply, error) {
+func (*UnimplementedStarDustServer) GetUniqueIds(ctx context.Context, req *IdReq) (*IdsReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUniqueIds not implemented")
+}
+func (*UnimplementedStarDustServer) GetUniqueId(ctx context.Context, req *IdReq) (*IdReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUniqueId not implemented")
+}
+func (*UnimplementedStarDustServer) ParseId(ctx context.Context, req *ParseReq) (*ParseReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ParseId not implemented")
 }
 
 func RegisterStarDustServer(s *grpc.Server, srv StarDustServer) {
@@ -242,6 +405,42 @@ func _StarDust_GetUniqueIds_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _StarDust_GetUniqueId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(IdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StarDustServer).GetUniqueId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/service.stardust.v1.StarDust/GetUniqueId",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StarDustServer).GetUniqueId(ctx, req.(*IdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StarDust_ParseId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ParseReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StarDustServer).ParseId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/service.stardust.v1.StarDust/ParseId",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StarDustServer).ParseId(ctx, req.(*ParseReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _StarDust_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "service.stardust.v1.StarDust",
 	HandlerType: (*StarDustServer)(nil),
@@ -253,6 +452,14 @@ var _StarDust_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUniqueIds",
 			Handler:    _StarDust_GetUniqueIds_Handler,
+		},
+		{
+			MethodName: "GetUniqueId",
+			Handler:    _StarDust_GetUniqueId_Handler,
+		},
+		{
+			MethodName: "ParseId",
+			Handler:    _StarDust_ParseId_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -296,7 +503,7 @@ func (m *IdReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *IdReply) Marshal() (dAtA []byte, err error) {
+func (m *IdsReply) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -306,12 +513,12 @@ func (m *IdReply) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *IdReply) MarshalTo(dAtA []byte) (int, error) {
+func (m *IdsReply) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *IdReply) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *IdsReply) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -338,6 +545,117 @@ func (m *IdReply) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i = encodeVarintStardust(dAtA, i, uint64(j1))
 		i--
 		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *IdReply) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *IdReply) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *IdReply) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Id != 0 {
+		i = encodeVarintStardust(dAtA, i, uint64(m.Id))
+		i--
+		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *ParseReq) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ParseReq) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ParseReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Id != 0 {
+		i = encodeVarintStardust(dAtA, i, uint64(m.Id))
+		i--
+		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *ParseReply) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ParseReply) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ParseReply) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.BizType != 0 {
+		i = encodeVarintStardust(dAtA, i, uint64(m.BizType))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.Worker != 0 {
+		i = encodeVarintStardust(dAtA, i, uint64(m.Worker))
+		i--
+		dAtA[i] = 0x18
+	}
+	if m.Idc != 0 {
+		i = encodeVarintStardust(dAtA, i, uint64(m.Idc))
+		i--
+		dAtA[i] = 0x10
+	}
+	if m.Time != 0 {
+		i = encodeVarintStardust(dAtA, i, uint64(m.Time))
+		i--
+		dAtA[i] = 0x8
 	}
 	return len(dAtA) - i, nil
 }
@@ -371,7 +689,7 @@ func (m *IdReq) Size() (n int) {
 	return n
 }
 
-func (m *IdReply) Size() (n int) {
+func (m *IdsReply) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -383,6 +701,60 @@ func (m *IdReply) Size() (n int) {
 			l += sovStardust(uint64(e))
 		}
 		n += 1 + sovStardust(uint64(l)) + l
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *IdReply) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Id != 0 {
+		n += 1 + sovStardust(uint64(m.Id))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *ParseReq) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Id != 0 {
+		n += 1 + sovStardust(uint64(m.Id))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *ParseReply) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Time != 0 {
+		n += 1 + sovStardust(uint64(m.Time))
+	}
+	if m.Idc != 0 {
+		n += 1 + sovStardust(uint64(m.Idc))
+	}
+	if m.Worker != 0 {
+		n += 1 + sovStardust(uint64(m.Worker))
+	}
+	if m.BizType != 0 {
+		n += 1 + sovStardust(uint64(m.BizType))
 	}
 	if m.XXX_unrecognized != nil {
 		n += len(m.XXX_unrecognized)
@@ -488,7 +860,7 @@ func (m *IdReq) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *IdReply) Unmarshal(dAtA []byte) error {
+func (m *IdsReply) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -511,10 +883,10 @@ func (m *IdReply) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: IdReply: wiretype end group for non-group")
+			return fmt.Errorf("proto: IdsReply: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: IdReply: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: IdsReply: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -592,6 +964,282 @@ func (m *IdReply) Unmarshal(dAtA []byte) error {
 				}
 			} else {
 				return fmt.Errorf("proto: wrong wireType = %d for field Ids", wireType)
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipStardust(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthStardust
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthStardust
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *IdReply) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowStardust
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: IdReply: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: IdReply: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+			}
+			m.Id = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowStardust
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Id |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipStardust(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthStardust
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthStardust
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ParseReq) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowStardust
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ParseReq: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ParseReq: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+			}
+			m.Id = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowStardust
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Id |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipStardust(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthStardust
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthStardust
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ParseReply) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowStardust
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ParseReply: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ParseReply: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Time", wireType)
+			}
+			m.Time = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowStardust
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Time |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Idc", wireType)
+			}
+			m.Idc = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowStardust
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Idc |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Worker", wireType)
+			}
+			m.Worker = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowStardust
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Worker |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field BizType", wireType)
+			}
+			m.BizType = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowStardust
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.BizType |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
 			}
 		default:
 			iNdEx = preIndex

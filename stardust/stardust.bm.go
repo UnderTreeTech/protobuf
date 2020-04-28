@@ -18,12 +18,18 @@ var _ binding.StructValidator
 
 var PathStarDustPing = "/service.stardust.v1.StarDust/Ping"
 var PathStarDustGetUniqueIds = "/service.stardust.v1.StarDust/GetUniqueIds"
+var PathStarDustGetUniqueId = "/service.stardust.v1.StarDust/GetUniqueId"
+var PathStarDustParseId = "/service.stardust.v1.StarDust/ParseId"
 
 // StarDustBMServer is the server API for StarDust service.
 type StarDustBMServer interface {
 	Ping(ctx context.Context, req *google_protobuf1.Empty) (resp *google_protobuf1.Empty, err error)
 
-	GetUniqueIds(ctx context.Context, req *IdReq) (resp *IdReply, err error)
+	GetUniqueIds(ctx context.Context, req *IdReq) (resp *IdsReply, err error)
+
+	GetUniqueId(ctx context.Context, req *IdReq) (resp *IdReply, err error)
+
+	ParseId(ctx context.Context, req *ParseReq) (resp *ParseReply, err error)
 }
 
 var StarDustSvc StarDustBMServer
@@ -46,9 +52,29 @@ func starDustGetUniqueIds(c *bm.Context) {
 	c.JSON(resp, err)
 }
 
+func starDustGetUniqueId(c *bm.Context) {
+	p := new(IdReq)
+	if err := c.BindWith(p, binding.Default(c.Request.Method, c.Request.Header.Get("Content-Type"))); err != nil {
+		return
+	}
+	resp, err := StarDustSvc.GetUniqueId(c, p)
+	c.JSON(resp, err)
+}
+
+func starDustParseId(c *bm.Context) {
+	p := new(ParseReq)
+	if err := c.BindWith(p, binding.Default(c.Request.Method, c.Request.Header.Get("Content-Type"))); err != nil {
+		return
+	}
+	resp, err := StarDustSvc.ParseId(c, p)
+	c.JSON(resp, err)
+}
+
 // RegisterStarDustBMServer Register the blademaster route
 func RegisterStarDustBMServer(e *bm.Engine, server StarDustBMServer) {
 	StarDustSvc = server
 	e.GET("/service.stardust.v1.StarDust/Ping", starDustPing)
 	e.GET("/service.stardust.v1.StarDust/GetUniqueIds", starDustGetUniqueIds)
+	e.GET("/service.stardust.v1.StarDust/GetUniqueId", starDustGetUniqueId)
+	e.GET("/service.stardust.v1.StarDust/ParseId", starDustParseId)
 }
