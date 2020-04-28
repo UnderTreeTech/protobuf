@@ -9,20 +9,33 @@ import (
 	bm "github.com/go-kratos/kratos/pkg/net/http/blademaster"
 	"github.com/go-kratos/kratos/pkg/net/http/blademaster/binding"
 )
+import google_protobuf1 "github.com/golang/protobuf/ptypes/empty"
 
 // to suppressed 'imported but not used warning'
 var _ *bm.Context
 var _ context.Context
 var _ binding.StructValidator
 
+var PathStarDustPing = "/service.stardust.v1.StarDust/Ping"
 var PathStarDustGetUniqueIds = "/service.stardust.v1.StarDust/GetUniqueIds"
 
 // StarDustBMServer is the server API for StarDust service.
 type StarDustBMServer interface {
+	Ping(ctx context.Context, req *google_protobuf1.Empty) (resp *google_protobuf1.Empty, err error)
+
 	GetUniqueIds(ctx context.Context, req *IdReq) (resp *IdReply, err error)
 }
 
 var StarDustSvc StarDustBMServer
+
+func starDustPing(c *bm.Context) {
+	p := new(google_protobuf1.Empty)
+	if err := c.BindWith(p, binding.Default(c.Request.Method, c.Request.Header.Get("Content-Type"))); err != nil {
+		return
+	}
+	resp, err := StarDustSvc.Ping(c, p)
+	c.JSON(resp, err)
+}
 
 func starDustGetUniqueIds(c *bm.Context) {
 	p := new(IdReq)
@@ -36,5 +49,6 @@ func starDustGetUniqueIds(c *bm.Context) {
 // RegisterStarDustBMServer Register the blademaster route
 func RegisterStarDustBMServer(e *bm.Engine, server StarDustBMServer) {
 	StarDustSvc = server
+	e.GET("/service.stardust.v1.StarDust/Ping", starDustPing)
 	e.GET("/service.stardust.v1.StarDust/GetUniqueIds", starDustGetUniqueIds)
 }
