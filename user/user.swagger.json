@@ -261,12 +261,6 @@
                     "items": {
                         "$ref": "#/definitions/.styd.service.user.v1.AppReply"
                     }
-                },
-                "urls": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
                 }
             },
             "required": [
