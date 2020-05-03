@@ -16,7 +16,6 @@ option go_package = "demo";
 option (gogoproto.goproto_getters_all) = false;
 
 service Demo {
-  rpc Ping(.google.protobuf.Empty) returns (.google.protobuf.Empty);
   rpc SayHello(HelloReq) returns (.google.protobuf.Empty);
   rpc SayHelloURL(HelloReq) returns (HelloResp) {
     option (google.api.http) = {

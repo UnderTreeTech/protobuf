@@ -18,7 +18,6 @@ var _ binding.StructValidator
 
 var PathUserGetStaffInfo = "/service.user.v1.User/GetStaffInfo"
 var PathUserDelStaff = "/service.user.v1.User/DelStaff"
-var PathUserPing = "/service.user.v1.User/Ping"
 var PathUserGetAppSecret = "/service.user.v1.User/GetAppSecret"
 var PathUserGetAppSkipUrls = "/service.user.v1.User/GetAppSkipUrls"
 var PathUserTestValidator = "/user/validate"
@@ -29,8 +28,6 @@ type UserBMServer interface {
 	GetStaffInfo(ctx context.Context, req *StaffInfoReq) (resp *StaffInfoReply, err error)
 
 	DelStaff(ctx context.Context, req *StaffInfoReq) (resp *google_protobuf1.Empty, err error)
-
-	Ping(ctx context.Context, req *google_protobuf1.Empty) (resp *google_protobuf1.Empty, err error)
 
 	GetAppSecret(ctx context.Context, req *AppReq) (resp *AppReply, err error)
 
@@ -56,15 +53,6 @@ func userDelStaff(c *bm.Context) {
 		return
 	}
 	resp, err := UserSvc.DelStaff(c, p)
-	c.JSON(resp, err)
-}
-
-func userPing(c *bm.Context) {
-	p := new(google_protobuf1.Empty)
-	if err := c.BindWith(p, binding.Default(c.Request.Method, c.Request.Header.Get("Content-Type"))); err != nil {
-		return
-	}
-	resp, err := UserSvc.Ping(c, p)
 	c.JSON(resp, err)
 }
 
@@ -100,7 +88,6 @@ func RegisterUserBMServer(e *bm.Engine, server UserBMServer) {
 	UserSvc = server
 	e.GET("/service.user.v1.User/GetStaffInfo", userGetStaffInfo)
 	e.GET("/service.user.v1.User/DelStaff", userDelStaff)
-	e.GET("/service.user.v1.User/Ping", userPing)
 	e.GET("/service.user.v1.User/GetAppSecret", userGetAppSecret)
 	e.GET("/service.user.v1.User/GetAppSkipUrls", userGetAppSkipUrls)
 	e.POST("/user/validate", userTestValidator)

@@ -168,33 +168,6 @@
                 ]
             }
         },
-        "/service.user.v1.User/Ping": {
-            "get": {
-                "summary": "/service.user.v1.User/Ping",
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "code": {
-                                    "type": "integer"
-                                },
-                                "message": {
-                                    "type": "string"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/.google.protobuf.Empty"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "service.user.v1.User"
-                ]
-            }
-        },
         "/user/validate": {
             "post": {
                 "summary": "/user/validate",

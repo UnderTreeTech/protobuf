@@ -16,7 +16,6 @@ option (gogoproto.goproto_getters_all) = false;
 service User {
     rpc GetStaffInfo(StaffInfoReq) returns (StaffInfoReply);
     rpc DelStaff(StaffInfoReq) returns (.google.protobuf.Empty);
-    rpc Ping(.google.protobuf.Empty) returns (.google.protobuf.Empty);
     rpc GetAppSecret(AppReq) returns (AppReply);
     rpc GetAppSkipUrls(AppReq) returns (SkipUrlsReply);
     rpc TestValidator(ValidateReq) returns (.google.protobuf.Empty) {

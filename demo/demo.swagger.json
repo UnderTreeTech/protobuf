@@ -51,33 +51,6 @@
                 ]
             }
         },
-        "/service.demo.v1.Demo/Ping": {
-            "get": {
-                "summary": "/service.demo.v1.Demo/Ping",
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "code": {
-                                    "type": "integer"
-                                },
-                                "message": {
-                                    "type": "string"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/.google.protobuf.Empty"
-                                }
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "service.demo.v1.Demo"
-                ]
-            }
-        },
         "/service.demo.v1.Demo/SayHello": {
             "get": {
                 "summary": "/service.demo.v1.Demo/SayHello",
