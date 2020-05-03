@@ -25,8 +25,8 @@ var _ *bm.Context
 var _ context.Context
 var _ binding.StructValidator
 
-var PathDemoPing = "/demo.service.v1.Demo/Ping"
-var PathDemoSayHello = "/demo.service.v1.Demo/SayHello"
+var PathDemoPing = "/service.demo.v1.Demo/Ping"
+var PathDemoSayHello = "/service.demo.v1.Demo/SayHello"
 var PathDemoSayHelloURL = "/kratos-demo/say_hello"
 
 // DemoBMServer is the server API for Demo service.
@@ -70,7 +70,7 @@ func demoSayHelloURL(c *bm.Context) {
 // RegisterDemoBMServer Register the blademaster route
 func RegisterDemoBMServer(e *bm.Engine, server DemoBMServer) {
 	DemoSvc = server
-	e.GET("/demo.service.v1.Demo/Ping", demoPing)
-	e.GET("/demo.service.v1.Demo/SayHello", demoSayHello)
+	e.GET("/service.demo.v1.Demo/Ping", demoPing)
+	e.GET("/service.demo.v1.Demo/SayHello", demoSayHello)
 	e.GET("/kratos-demo/say_hello", demoSayHelloURL)
 }

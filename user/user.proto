@@ -7,7 +7,7 @@ import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "google/protobuf/empty.proto";
 import "google/api/annotations.proto";
 
-package styd.service.user.v1;
+package service.user.v1;
 
 option go_package = "user";
 option (gogoproto.goproto_getters_all) = false;

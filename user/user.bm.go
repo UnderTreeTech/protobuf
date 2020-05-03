@@ -16,11 +16,11 @@ var _ *bm.Context
 var _ context.Context
 var _ binding.StructValidator
 
-var PathUserGetStaffInfo = "/styd.service.user.v1.User/GetStaffInfo"
-var PathUserDelStaff = "/styd.service.user.v1.User/DelStaff"
-var PathUserPing = "/styd.service.user.v1.User/Ping"
-var PathUserGetAppSecret = "/styd.service.user.v1.User/GetAppSecret"
-var PathUserGetAppSkipUrls = "/styd.service.user.v1.User/GetAppSkipUrls"
+var PathUserGetStaffInfo = "/service.user.v1.User/GetStaffInfo"
+var PathUserDelStaff = "/service.user.v1.User/DelStaff"
+var PathUserPing = "/service.user.v1.User/Ping"
+var PathUserGetAppSecret = "/service.user.v1.User/GetAppSecret"
+var PathUserGetAppSkipUrls = "/service.user.v1.User/GetAppSkipUrls"
 var PathUserTestValidator = "/user/validate"
 
 // UserBMServer is the server API for User service.
@@ -98,10 +98,10 @@ func userTestValidator(c *bm.Context) {
 // RegisterUserBMServer Register the blademaster route
 func RegisterUserBMServer(e *bm.Engine, server UserBMServer) {
 	UserSvc = server
-	e.GET("/styd.service.user.v1.User/GetStaffInfo", userGetStaffInfo)
-	e.GET("/styd.service.user.v1.User/DelStaff", userDelStaff)
-	e.GET("/styd.service.user.v1.User/Ping", userPing)
-	e.GET("/styd.service.user.v1.User/GetAppSecret", userGetAppSecret)
-	e.GET("/styd.service.user.v1.User/GetAppSkipUrls", userGetAppSkipUrls)
+	e.GET("/service.user.v1.User/GetStaffInfo", userGetStaffInfo)
+	e.GET("/service.user.v1.User/DelStaff", userDelStaff)
+	e.GET("/service.user.v1.User/Ping", userPing)
+	e.GET("/service.user.v1.User/GetAppSecret", userGetAppSecret)
+	e.GET("/service.user.v1.User/GetAppSkipUrls", userGetAppSkipUrls)
 	e.POST("/user/validate", userTestValidator)
 }
