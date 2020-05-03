@@ -12,7 +12,7 @@ import (
 //API max handle duration: 1s
 
 // AppID .
-const AppID = "service.demo.v1"
+const AppID = "service.user.v1"
 
 // NewClient new grpc client
 func NewClient(cfg *warden.ClientConfig, opts ...grpc.DialOption) (DemoClient, error) {
