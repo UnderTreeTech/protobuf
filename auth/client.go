@@ -1,4 +1,4 @@
-package app
+package auth
 
 import (
 	"context"
@@ -9,19 +9,19 @@ import (
 )
 
 //SLA Definition
-//API max handle duration: 15ms
+//API max handle duration: 10ms.
 
 // AppID Service.
-const AppID = "service.app.v1"
+const AppID = "service.auth.v1"
 
 // NewClient new grpc client
-func NewClient(cfg *warden.ClientConfig, opts ...grpc.DialOption) (AppClient, error) {
+func NewClient(cfg *warden.ClientConfig, opts ...grpc.DialOption) (ApiAuthClient, error) {
 	client := warden.NewClient(cfg, opts...)
 	cc, err := client.Dial(context.Background(), fmt.Sprintf("etcd://default/%s", AppID))
 	if err != nil {
 		return nil, err
 	}
-	return NewAppClient(cc), nil
+	return NewApiAuthClient(cc), nil
 }
 
 // 生成 gRPC 代码

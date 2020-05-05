@@ -1,0 +1,79 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "api_auth.proto",
+        "version": "1"
+    },
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json",
+        "multipart/form-data"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/service.auth.v1.ApiAuth/GetAuthInfo": {
+            "get": {
+                "summary": "/service.auth.v1.ApiAuth/GetAuthInfo",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/.service.auth.v1.AuthReply"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "tags": [
+                    "service.auth.v1.ApiAuth"
+                ]
+            }
+        }
+    },
+    "definitions": {
+        ".service.auth.v1.AuthReply": {
+            "type": "object",
+            "properties": {
+                "app_key": {
+                    "type": "string"
+                },
+                "app_secret": {
+                    "type": "string"
+                }
+            }
+        },
+        ".service.auth.v1.AuthReq": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "id"
+            ]
+        }
+    }
+}
