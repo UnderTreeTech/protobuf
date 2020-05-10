@@ -9,7 +9,7 @@ import (
 )
 
 //SLA Definition
-//API max handle duration: 15ms
+//API max handle duration: 10ms
 
 // AppID Service.
 const AppID = "service.app.v1"

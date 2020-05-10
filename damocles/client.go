@@ -1,4 +1,4 @@
-package auth
+package damocles
 
 import (
 	"context"
@@ -15,13 +15,13 @@ import (
 const AppID = "service.auth.v1"
 
 // NewClient new grpc client
-func NewClient(cfg *warden.ClientConfig, opts ...grpc.DialOption) (ApiAuthClient, error) {
+func NewClient(cfg *warden.ClientConfig, opts ...grpc.DialOption) (AuthClient, error) {
 	client := warden.NewClient(cfg, opts...)
 	cc, err := client.Dial(context.Background(), fmt.Sprintf("etcd://default/%s", AppID))
 	if err != nil {
 		return nil, err
 	}
-	return NewApiAuthClient(cc), nil
+	return NewAuthClient(cc), nil
 }
 
 // 生成 gRPC 代码

@@ -5,13 +5,13 @@ syntax = "proto3";
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 
-package service.auth.v1;
+package service.damocles.v1;
 
-option go_package = "auth";
+option go_package = "damocles";
 option (gogoproto.goproto_getters_all) = false;
 
 //Service Definition
-service ApiAuth {
+service Auth {
     rpc GetAuthInfo(AuthReq) returns (AuthReply);
 }
 
