@@ -1,0 +1,26 @@
+// 定义项目 API 的 proto 文件 可以同时描述 gRPC 和 HTTP API
+// protobuf 文件参考:
+//  - https://developers.google.com/protocol-buffers/
+syntax = "proto3";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+package service.damocles.v1;
+
+option go_package = "damocles";
+option (gogoproto.goproto_getters_all) = false;
+
+//Service Definition
+service Auth {
+    rpc GetAuthInfo(AuthReq) returns (AuthReply);
+}
+
+message AuthReq {
+    int64 id = 1 [(gogoproto.jsontag) = 'id',(gogoproto.moretags) = 'form:"id" validate:"required"'];
+}
+
+
+message AuthReply {
+    string appkey = 1 [(gogoproto.jsontag) = 'app_key'];
+    string appsecret = 2 [(gogoproto.jsontag) = 'app_secret'];
+}
