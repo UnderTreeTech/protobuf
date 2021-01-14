@@ -3,31 +3,24 @@
 //  - https://developers.google.com/protocol-buffers/
 syntax = "proto3";
 
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "google/protobuf/empty.proto";
-import "google/api/annotations.proto";
 
 // package 命名使用 {appid}.{version} 的方式, version 形如 v1, v2 ..
 package service.demo.v1;
 
 // NOTE: 最后请删除这些无用的注释 (゜-゜)つロ
 
-option go_package = "demo";
-option (gogoproto.goproto_getters_all) = false;
+option go_package = ".;demo";
 
 service Demo {
   rpc SayHello(HelloReq) returns (.google.protobuf.Empty);
-  rpc SayHelloURL(HelloReq) returns (HelloResp) {
-    option (google.api.http) = {
-      get: "/kratos-demo/say_hello"
-    };
-  };
+  rpc SayHelloURL(HelloReq) returns (HelloResp);
 }
 
 message HelloReq {
-  string name = 1 [(gogoproto.moretags) = 'form:"name" validate:"required"'];
+  string name = 1;
 }
 
 message HelloResp {
-  string Content = 1 [(gogoproto.jsontag) = 'content'];
+  string Content = 1;
 }

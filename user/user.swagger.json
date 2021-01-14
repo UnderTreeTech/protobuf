@@ -42,13 +42,13 @@
                     {
                         "name": "id",
                         "in": "query",
-                        "required": true,
+                        "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "shop_id",
                         "in": "query",
-                        "required": true,
+                        "required": false,
                         "type": "integer"
                     }
                 ],
@@ -83,7 +83,7 @@
                     {
                         "name": "sappkey",
                         "in": "query",
-                        "required": true,
+                        "required": false,
                         "type": "string"
                     }
                 ],
@@ -118,7 +118,7 @@
                     {
                         "name": "sappkey",
                         "in": "query",
-                        "required": true,
+                        "required": false,
                         "type": "string"
                     }
                 ],
@@ -153,13 +153,13 @@
                     {
                         "name": "id",
                         "in": "query",
-                        "required": true,
+                        "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "shop_id",
                         "in": "query",
-                        "required": true,
+                        "required": false,
                         "type": "integer"
                     }
                 ],
@@ -168,9 +168,9 @@
                 ]
             }
         },
-        "/user/validate": {
-            "post": {
-                "summary": "/user/validate",
+        "/service.user.v1.User/TestValidator": {
+            "get": {
+                "summary": "/service.user.v1.User/TestValidator",
                 "responses": {
                     "200": {
                         "description": "A successful response.",
@@ -216,12 +216,10 @@
             "type": "object",
             "properties": {
                 "mobile": {
-                    "type": "string",
-                    "description": "mobile,min=6,max=20"
+                    "type": "string"
                 },
                 "address": {
-                    "type": "string",
-                    "description": "max=100"
+                    "type": "string"
                 },
                 "app": {
                     "$ref": "#/definitions/.service.user.v1.AppReq"
@@ -235,19 +233,15 @@
                         "$ref": "#/definitions/.service.user.v1.AppReply"
                     }
                 }
-            },
-            "required": [
-                "mobile",
-                "address"
-            ]
+            }
         },
         ".service.user.v1.AppReply": {
             "type": "object",
             "properties": {
-                "app_key": {
+                "appkey": {
                     "type": "string"
                 },
-                "app_secret": {
+                "appsecret": {
                     "type": "string"
                 }
             }
@@ -258,10 +252,7 @@
                 "sappkey": {
                     "type": "string"
                 }
-            },
-            "required": [
-                "sappkey"
-            ]
+            }
         },
         ".service.user.v1.SkipUrlsReply": {
             "type": "object",
@@ -286,13 +277,13 @@
                 "nick_name": {
                     "type": "string"
                 },
-                "phone": {
+                "mobile": {
                     "type": "string"
                 },
                 "birthday": {
                     "type": "string"
                 },
-                "sex": {
+                "gender": {
                     "type": "string"
                 }
             }
@@ -306,51 +297,33 @@
                 "shop_id": {
                     "type": "integer"
                 }
-            },
-            "required": [
-                "id",
-                "shop_id"
-            ]
+            }
         },
         ".service.user.v1.ValidateReq": {
             "type": "object",
             "properties": {
                 "email": {
-                    "type": "string",
-                    "description": "email"
+                    "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "min=6,max=10"
+                    "type": "string"
                 },
                 "password": {
-                    "type": "string",
-                    "description": "min=6,max=10"
+                    "type": "string"
                 },
                 "sex": {
-                    "type": "integer",
-                    "description": "gte=0,lte=2"
+                    "type": "integer"
                 },
                 "age": {
-                    "type": "integer",
-                    "description": "gte=1,lte=60,gtefield=Sex"
+                    "type": "integer"
                 },
                 "addr": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/.service.user.v1.Address"
-                    },
-                    "description": "gt=0,dive"
+                    }
                 }
-            },
-            "required": [
-                "email",
-                "name",
-                "password",
-                "sex",
-                "age",
-                "addr"
-            ]
+            }
         }
     }
 }

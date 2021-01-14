@@ -3,12 +3,10 @@
 //  - https://developers.google.com/protocol-buffers/
 syntax = "proto3";
 
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 
 package service.damocles.v1;
 
-option go_package = "damocles";
-option (gogoproto.goproto_getters_all) = false;
+option go_package = ".;damocles";
 
 //Service Definition
 service Auth {
@@ -16,11 +14,11 @@ service Auth {
 }
 
 message AuthReq {
-    int64 id = 1 [(gogoproto.jsontag) = 'id',(gogoproto.moretags) = 'form:"id" validate:"required"'];
+    int64 id = 1;
 }
 
 
 message AuthReply {
-    string appkey = 1 [(gogoproto.jsontag) = 'app_key'];
-    string appsecret = 2 [(gogoproto.jsontag) = 'app_secret'];
+    string appkey = 1;
+    string appsecret = 2;
 }

@@ -3,12 +3,11 @@
 //  - https://developers.google.com/protocol-buffers/
 syntax = "proto3";
 
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "google/protobuf/empty.proto";
 
 package service.app.v1;
 
-option go_package = "app";
+option go_package = ".;app";
 
 //Service Definition
 service App {
@@ -18,14 +17,14 @@ service App {
 }
 
 message AppReq {
-    string sappkey = 1 [(gogoproto.jsontag) = 'sappkey',(gogoproto.moretags) = 'form:"sappkey" validate:"required"'];
+    string sappkey = 1;
 }
 
 message AppReply {
-    string appkey = 1 [(gogoproto.jsontag) = 'app_key'];
-    string appsecret = 2 [(gogoproto.jsontag) = 'app_secret'];
+    string appkey = 1;
+    string appsecret = 2;
 }
 
 message SkipUrlsReply {
-    repeated string urls = 1 [(gogoproto.jsontag) = 'urls'];
+    repeated string urls = 1;
 }

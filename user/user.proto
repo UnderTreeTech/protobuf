@@ -3,14 +3,11 @@
 //  - https://developers.google.com/protocol-buffers/
 syntax = "proto3";
 
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "google/protobuf/empty.proto";
-import "google/api/annotations.proto";
 
 package service.user.v1;
 
-option go_package = "user";
-option (gogoproto.goproto_getters_all) = false;
+option go_package = ".;user";
 
 //Service Definition
 service User {
@@ -18,53 +15,49 @@ service User {
     rpc DelStaff(StaffInfoReq) returns (.google.protobuf.Empty);
     rpc GetAppSecret(AppReq) returns (AppReply);
     rpc GetAppSkipUrls(AppReq) returns (SkipUrlsReply);
-    rpc TestValidator(ValidateReq) returns (.google.protobuf.Empty) {
-        option (google.api.http) = {
-          post: "/user/validate"
-        };
-    };
+    rpc TestValidator(ValidateReq) returns (.google.protobuf.Empty);
 }
 
 message StaffInfoReq {
-    int64 id = 1 [(gogoproto.moretags) = 'form:"id" validate:"required"'];
-    int64 shop_id = 2 [(gogoproto.moretags) = 'form:"shop_id" validate:"required"'];
+    int64 id = 1;
+    int64 shop_id = 2;
 }
 
 message StaffInfoReply {
-    int64 id = 1 [(gogoproto.jsontag) = 'id'];
-    string staff_name = 2 [(gogoproto.jsontag) = 'staff_name'];
-    string nick_name = 3 [(gogoproto.jsontag) = 'nick_name'];
-    string mobile = 4 [(gogoproto.jsontag) = 'phone'];
-    string birthday = 5 [(gogoproto.jsontag) = 'birthday'];
-    string gender = 6 [(gogoproto.jsontag) = 'sex'];
+    int64 id = 1;
+    string staff_name = 2;
+    string nick_name = 3;
+    string mobile = 4;
+    string birthday = 5;
+    string gender = 6;
 }
 
 message AppReq {
-    string sappkey = 1 [(gogoproto.moretags) = 'form:"sappkey" validate:"required"'];
+    string sappkey = 1;
 }
 
 message AppReply {
-    string appkey = 1 [(gogoproto.jsontag) = 'app_key'];
-    string appsecret = 2 [(gogoproto.jsontag) = 'app_secret'];
+    string appkey = 1;
+    string appsecret = 2;
 }
 
 message SkipUrlsReply {
-    repeated string urls = 1 [(gogoproto.jsontag) = 'urls'];
+    repeated string urls = 1;
 }
 
 message ValidateReq {
-    string email = 1 [(gogoproto.jsontag) = 'email',(gogoproto.moretags) = 'form:"email" validate:"required,email"'];
-    string name = 2 [(gogoproto.jsontag) = 'name', (gogoproto.moretags) = 'form:"name" validate:"required,min=6,max=10"'];
-    string password = 3 [(gogoproto.jsontag) = 'password',(gogoproto.moretags) = 'form:"password" validate:"required,min=6,max=10"'];
-    int32 sex = 4 [(gogoproto.jsontag) = 'sex',(gogoproto.moretags) = 'form:"sex" validate:"required,gte=0,lte=2"'];
-    int32 age = 5 [(gogoproto.jsontag) = 'age',(gogoproto.moretags) = 'form:"age" validate:"required,gte=1,lte=60,gtefield=Sex"'];
-    repeated Address addr = 6 [(gogoproto.jsontag) = 'addr',(gogoproto.moretags) = 'form:"addr" validate:"required,gt=0,dive"'];
+    string email = 1;
+    string name = 2;
+    string password = 3;
+    int32 sex = 4;
+    int32 age = 5;
+    repeated Address addr = 6;
 }
 
 message Address {
-    string mobile = 1 [(gogoproto.jsontag) = 'mobile',(gogoproto.moretags) = 'form:"mobile" validate:"required,mobile,min=6,max=20"'];
-    string address = 2 [(gogoproto.jsontag) = 'address',(gogoproto.moretags) = 'form:"address" validate:"required,max=100"'];
-    AppReq app = 3 [(gogoproto.jsontag) = 'app'];
-    SkipUrlsReply reply = 4 [(gogoproto.jsontag) = 'reply'];
-    repeated AppReply resp = 5 [(gogoproto.jsontag) = 'resp'];
+    string mobile = 1;
+    string address = 2;
+    AppReq app = 3;
+    SkipUrlsReply reply = 4;
+    repeated AppReply resp = 5;
 }
